@@ -15,7 +15,7 @@
 
 	<link rel="stylesheet" href="css/reveal.min.css">
 	<link rel="stylesheet" href="css/heap.css">
-	<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+	<link rel="stylesheet" href="css/theme/league.css" id="theme">
 
 	<!-- For syntax highlighting -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -40,147 +40,15 @@
 
 	<div class="reveal">
 		<div class="slides">
-
 			<!-- Title slide -->
 			<section>
-				<h1>Java Heap</h1>
-				<p>
-					<small>Vishwas Gahoi</small>
-				</p>
-				<aside class="notes">
-					Some notes here
-				</aside>
+				<h5>Learning Docs</h5>
+				<ul>
+					<li>
+						<a href='/javaHeap.html'>Java Heap in Detail</a>
+					</li>
+				</ul>
 			</section>
-			<!-- Overview -->
-			<section>
-				<h1>Overview</h1>
-				<p class="fragment">
-					<ul>
-						<li>Java Virtual Machine (JVM)</li>
-						<li>Java Memory Models</li>
-						<li>Heap and Non-Heap Memory</li>
-						<li>Allocated and Used Memory</li>
-						<li>Java Stack Memory</li>
-						<li>Garbage Collection</li>
-						<li>Mark and Sweep Model of Garbage collection</li>
-						<li>Monitoring of Memory Use and GC Activity</li>
-						<li>Java Garbage Collection Tuning</li>
-						<li>Sources</li>
-						<li>Related</li>
-					</ul>
-				</p>
-				<aside class="notes">
-				</aside>
-			</section>
-			<section>
-				<h2>Java (JVM) Memory Structure</h2>
-				<p>JVM memory is divided into multiple parts: Heap Memory, Non-Heap Memory, and Other.</p>
-				<p class="fragment">
-					<p>
-						<img width="550" src="img/JVM-Memory-Model.jpg" alt="gitlab">
-					</p>
-				</p>
-			</section>
-			<section>
-				<h3>Heap memory</h3>
-				<p class="fragment">
-					<ul>
-						<li>Run time data area from which the memory for all java class instances</li>
-						<li>The size of the heap can be specified using –Xms VM option.</li>
-						<li>The heap can be of fixed size or variable size depending on the garbage collection strategy.</li>
-						<li>Maximum heap size can be set using –Xmx option default value is 64MB</li>
-					</ul>
-				</p>
-			</section>
-			<section>
-				<h3>Non Heap memory</h3>
-				<p class="fragment">
-					<ul>
-						<li>It is created at the JVM startup and stores per-class structures such as runtime constant pool, field and method data,
-							and the code for methods and constructors, as well as interned Strings.</li>
-						<li>This can be changed using –XX:MaxPermSize VM option, default value is 64MB</li>
-						<li>JVM uses other memory to store the JVM code itself, JVM internal structures, loaded profiler agent code and data, etc.</li>
-					</ul>
-				</p>
-			</section>
-			<section>
-				<h3>Java (JVM) Heap Memory Structure</h3>
-				<p class="fragment">
-					<p>
-						<center>
-							<img width="550" src="img/java-memory-management-1.jpg">
-						</center>
-					</p>
-					<ul class='small'>
-
-						<li>The JVM heap is physically divided into two parts (or generations): nursery (or young space/young generation) and old
-							space (or old generation).</li>
-						<li>The nursery is a part of the heap reserved for allocation of new objects.</li>
-						<li>When the nursery becomes full, garbage is collected by running a special young collection, where all the objects that
-							have lived long enough in the nursery are promoted (moved) to the old space</li>
-						<li>This garbage collection is called Minor GC. The nursery is divide into three parts – Eden Memory and two Survivor Memory
-							spaces.
-						</li>
-					</ul>
-				</p>
-			</section>
-			<section>
-				<h3>cont...</h3>
-				<p class="fragment">
-					<ul>
-						<li>Most of the newly created objects are located in the Eden Memory space.</li>
-						<li>Minor GC also checks the survivor objects and moves them to the other survivor space. So at a time, one of the survivor
-							space is always empty.</li>
-						<li>Objects that have survived many cycles of GC, are moved to the old generation memory space. Usually it is done by setting
-							a threshold for the age of the nursery objects before they become eligible to promote to old generation</li>
-						<li>Old generation garbage collection is called as Major GC and usually takes longer time.
-						</li>
-					</ul>
-				</p>
-			</section>
-			<section>
-				<h3>Java Memory Models</h3>
-				<h4>Permanent Generation</h4>
-				<p class="fragment">
-					<ul class='small'>
-						<li>Perm Gen is populated by JVM at runtime based on the classes used by the application.</li>
-						<li>Perm Gen also contains Java SE library classes and methods. Perm Gen objects are garbage collected in a full garbage
-							collection.</li>
-					</ul>
-				</p>
-				<h4>Metaspace</h4>
-				<p class="fragment">
-					<ul class='small'>
-						<li>With Java 8, there is no Perm Gen, that means there is no more “java.lang.OutOfMemoryError: PermGen” space problems.</li>
-						<li>Metaspace is not part of the heap.</li>
-						<li>metadata are now allocated out of native memory. Metaspace by default auto increases its size</li>
-						<li>“-XX:MetaspaceSize” and “-XX:MaxMetaspaceSize”.</li>
-						<li>Metaspace is that the lifetime of classes and their metadata matches the lifetime of the classloaders.</li>
-					</ul>
-				</p>
-			</section>
-			<section>
-				<h3>Cont...</h3>
-				<h4>Code Cache</h4>
-				<p class="fragment">
-					<ul class='small'>
-						<li>Perm Gen is populated by JVM at runtime based on the classes used by the application.</li>
-						<li>Perm Gen also contains Java SE library classes and methods. Perm Gen objects are garbage collected in a full garbage
-							collection.</li>
-					</ul>
-				</p>
-				<h4>Metaspace</h4>
-				<p class="fragment">
-					<ul class='small'>
-						<li>With Java 8, there is no Perm Gen, that means there is no more “java.lang.OutOfMemoryError: PermGen” space problems.</li>
-						<li>Metaspace is not part of the heap.</li>
-						<li>metadata are now allocated out of native memory. Metaspace by default auto increases its size</li>
-						<li>“-XX:MetaspaceSize” and “-XX:MaxMetaspaceSize”.</li>
-						<li>Metaspace is that the lifetime of classes and their metadata matches the lifetime of the classloaders.</li>
-					</ul>
-				</p>
-			</section>
-
 		</div>
 	</div>
 
