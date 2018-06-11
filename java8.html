@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Metadata to edit -->
+    <title> A practical introduction to git</title>
+    <meta name="author" content="Anna Kennedy">
+    <!-- /Metadata to edit -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/heap.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title slide -->
+            <section>
+                <h1>What's New in JDK 8</h1>
+                <p>
+                    <small>Vishwas Gahoi</small>
+                </p>
+                <aside class="notes">
+                    Some notes here
+                </aside>
+            </section>
+            <!-- Overview -->
+            <section>
+                <h2>Overview</h2>
+                <p class="fragment">
+                    <ul class='small'>
+                        <li>Java Programming Language</li>
+                        <li>Collections</li>
+                        <li>Compact Profiles</li>
+                        <li>Security</li>
+                        <li>JavaFX</li>
+                        <li>Tools</li>
+                        <li>Internationalization</li>
+                        <li>Deployment</li>
+                        <li>Date-Time Package</li>
+                        <li>Scripting</li>
+                        <li>Pack200 & IO and NIO</li>
+                        <li>java.lang and java.util Packages</li>
+                        <LI>JDBC & Java DB</LI>
+                        <li>Networking</li>
+                        <li>Concurrency</li>
+                        <li>HotSpot</li>
+                        <li>Java XML - JAXP & Java Mission Control 5.3 Release Notes</li>
+                    </ul>
+                </p>
+                <aside class="notes">
+                </aside>
+            </section>
+            <section>
+                <h3>Lambda Expressions</h3>
+                <p class="fragment">
+                    <ul>
+                        <li>Lambda expression is a new and important feature of Java which was included in Java SE 8.</li>
+                        <li>The Lambda expression is used to provide the implementation of an interface which has functional
+                            interface.
+                        </li>
+                        <li>In case of lambda expression, we don't need to define the method again for providing the implementation.
+                            Here, we just write the implementation code.</li>
+                        <li>Java lambda expression is treated as a function, so compiler does not create .class file.</li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h3>Method References</h3>
+                <p class="fragment">
+                    <ul>
+                        <li>Method reference is used to refer method of functional interface. It is compact and easy form of
+                            lambda expression.</li>
+                        <li>Reference to a static method. (ContainingClass::staticMethodName )</li>
+                        <li>BiFunction interface and using it's apply() method.
+                            <br>BiFunction adder = Arithmetic::add;
+                            <br> int result = adder.apply(10, 20);</li>
+                        <li>Reference to a non-static method. (ContainingClass::instanceMethodName)</li>
+                        <li>Reference to a Constructor
+                            <br> ClassName::new </li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h3>Functional Interface</h3>
+                <p class="fragment">
+                    <ul class='small'>
+                        <li>Functional Interface is also known as Single Abstract Method Interfaces or SAM Interfaces. It is
+                            a new feature in Java, which helps to achieve functional programming approach.</li>
+                        <li>A functional interface can extends another interface only when it does not have any abstract method.</li>
+                    </ul>
+                </p>
+                <h6>Java Predefined-Functional Interfaces</h6>
+                <p class="fragment">
+                    <div class='java8Feature'>
+                        <span title='It represents an operation that accepts two input arguments and returns no result.'>BiConsumer(T,U)</span>
+                        <span title='It represents an operation that accepts a single argument and returns no result.'>Consumer(T)</span>
+                        <span title='It represents a function that accepts one argument and returns a result.'>Function(T,R)</span>
+                        <span title='It represents a predicate (boolean-valued function) of one argument.'>Predicate(T)</span>
+                        <span title='It represents a function that accepts two arguments and returns a a result.'>BiFunctionT,U,R)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <span title=''>BiConsumer(T,U)</span>
+                        <spantitle=''>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                            <span>BiConsumer(T,U)</span>
+                    </div>
+                </p>
+            </section>
+            <section>
+                <h3>Option</h3>
+                <p class="fragment">
+                    <ul>
+                        <li>It is a public final class and used to deal with NullPointerException in Java application.</li>
+                    </ul>
+                </p>
+                <h6>Java Optional Class Methods</h6>
+                <p class="fragment">
+                    <div class='java8Feature'>
+                        <span>public static (T) Optional(T) empty()</span>
+                        <span>public static (T) Optional(T) of(T value)</span>
+                        <span>public static (T) Optional(T) ofNullable(T value)</span>
+                        <span>public T get()</span>
+                        <span>public boolean isPresent()</span>
+                        <span>public void ifPresent(Consumer(? super T> consumer)</span>
+                        <span>public Optional(T) filter(Predicate(? super T> predicate)</span>
+                        <span>public (U) Optional(U) map(Function(? super T,? extends U) mapper)</span>
+                        <span>public (U) Optional(U) flatMap(Function(? super T,Optional(U) mapper)</span>
+                        <span>public T orElse(T other)</span>
+                        <span>public T orElseGet(Supplier(? extends T> other)</span>
+                        <span>public (X extends Throwable) T orElseThrow(Supplier(? extends X) exceptionSupplier) throws X extends
+                            Throwable
+                        </span>
+                    </div>
+                </p>
+            </section>
+            <section>
+                <h6>Default Method</h6>
+                <p class="fragment">
+                    <ul class="small">
+                        <li>Java provides a facility to create default methods inside the interface. Methods which are defined
+                            inside the interface and tagged with default are known as default methods. These methods are
+                            non-abstract methods.</li>
+                        <li>You can also define static methods inside the interface. Static methods are used to define utility
+                            methods.
+                        </li>
+                    </ul>
+                </p>
+                <h6>ForEach</h6>
+                <p class="fragment">
+                    <ul class="small">
+                        <li>Java provides a new method forEach() to iterate the elements. It is defined in Iterable and Stream
+                            interface. It is a default method defined in the Iterable interface.</li>
+                        <li>Along with forEach() method, Java provides one more method forEachOrdered(). It is used to iterate
+                            elements in the order specified by the stream.
+                            <BR> void forEachOrdered(Consumer
+                            <? super T> action)  
+                        </li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                    <h6>Java StringJoiner</h6>
+                    <p class="fragment">
+                        <ul class="small">
+                            <li>Java added a new final class StringJoiner in java.util package. It is used to construct a sequence of characters separated by a delimiter.</li>
+                        </ul>
+                    </p>
+                    <h6>Java Collectors</h6>
+                    <p class="fragment">
+                        <ul class="small">
+                            <li>Collectors is a final class that extends Object class. It provides reduction operations, such as accumulating elements into collections, summarizing elements according to various criteria, etc. 
+                            </li>
+                        </ul>
+                    </p>
+                    <h6>Java 8 Date/Time API</h6>
+                    <p class="fragment">
+                        <ul class="small">
+                            <li>
+                               Java has introduced a new Date and Time API since Java 8. The java.time package contains Java 8 Date and Time classes. 
+                            </li>
+                        </ul>
+                    </p>
+                </section>
+                <section>
+                        <h6>Java Nashorn</h6>
+                        <p class="fragment">
+                            <ul class="small">
+                                <li>Nashorn is a JavaScript engine. It is used to execute JavaScript code dynamically at JVM (Java Virtual Machine). Java provides a command-line tool jjs which is used to execute JavaScript code.</li>
+                                <li>In Nashorn, heredocs are simply multi-line strings.</li>
+                            </ul>
+                            
+                        </p>
+                        <pre><code>ScriptEngine ee = new ScriptEngineManager().getEngineByName("Nashorn");  
+// Reading Nashorn file  
+ee.eval(new FileReader("js/hello.js"));     
+                        </code></pre>
+                        <pre><code>
+// Import Java Package in JavaScript File
+print(java.lang.Math.sqrt(4));
+var importFile = new JavaImporter(java.util);  
+var a = new importFile.ArrayList();  
+print(a.getClass());
+//Import Java Package in JavaScript File
+var importIt = new JavaImporter(java.lang.String,java.util,java.io);  
+with (importIt) {  
+  var linkedHS = new LinkedHashSet();  
+  linkedHS.add(new File("abc"));  
+}  
+print(linkedHS);
+// Calling function inside Java code
+ScriptEngine ee = new ScriptEngineManager().getEngineByName("Nashorn");  
+ee.eval(new FileReader("js/hello.js"));
+Invocable invocable = (Invocable)ee;  
+invocable.invokeFunction("functionDemo2","Nashorn");   
+                        </code></pre>
+                    </section>
+                    <section>
+                            <h6>Java 8 Stream</h6>
+                            <p class="fragment">
+                                <ul class="small">
+                                    <li>Stream does not store elements. It simply conveys elements from a source such as a data structure, an array, or an I/O channel, through a pipeline of computational operations.</li>
+                                    <li>Stream is functional in nature. Operations performed on a stream does not modify it's source. For example, filtering a Stream obtained from a collection produces a new Stream without the filtered elements, rather than removing elements from the source collection.</li>
+                                    <li>Stream is lazy and evaluates code only when required.</li>
+                                    <li>The elements of a stream are only visited once during the life of a stream. Like an Iterator, a new stream must be generated to revisit the same elements of the source.</li>
+                                </ul>
+                            </p>
+                            <h6>Java Stream Filter</h6>
+                            <p class="fragment">
+                                <ul class="small">
+                                    <li>ava stream provides a method filter() to filter stream elements on the basis of given predicate. Suppose you want to get only even elements of your list then you can do this easily with the help of filter method.</li>
+                                    <pre><code>Stream<T> filter(Predicate<? super T> predicate)  </code></pre>
+                                </ul>
+                            </p>
+                        </section>
+
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+            ]
+        });
+
+    </script>
+
+</body>
+
+</html>
