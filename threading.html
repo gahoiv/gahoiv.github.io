@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
 
     <!-- Metadata to edit -->
@@ -22,72 +22,140 @@
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
-        if (window.location.search.match(/print-pdf/gi)) {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = 'css/print/pdf.css';
-            document.getElementsByTagName('head')[0].appendChild(link);
-        }
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
     </script>
 
     <!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-</head>
+  </head>
 
-<body>
+  <body>
 
     <div class="reveal">
-        <div class="slides">
+      <div class="slides">
 
-            <!-- Title slide -->
-            <section>
-                <h1>Java Multithreading in details</h1>
-                <p>
-                    <small>Work in progress...</small>
-                </p>
-                <aside class="notes">
-                    Some notes here
-                </aside>
-            </section>
-            <!-- Overview -->
-        </div>
+        <!-- Title slide -->
+        <section>
+          <h1>Java Multithreading in details</h1>
+          <p>
+            <small>Work in progress...</small>
+          </p>
+          <aside class="notes">
+            Some notes here
+          </aside>
+        </section>
+        <section>
+          <h3>Multithreading in Java</h3>
+          <p class="fragment">
+            <ul class="small">
+              <li>Thread is basically a lightweight sub-process, a smallest unit of processing.</li>
+              <li>Multithreading than multiprocessing because threads share a common memory area.</li>
+              <li>They don't allocate separate memory area so saves memory, and context-switching between the threads takes less time than process.</li>
+              <li>It doesn't block the user because threads are independent and you can perform multiple operations at same time.</li>
+            </ul>
+        </p>
+          <aside class="notes">
+          </aside>
+        </section>
+        <section>
+            <h3>Life cycle of a Thread (Thread States)</h3>
+            <p class="fragment">
+              <ul class="small">
+                <li>thread life cycle in java new, runnable, non-runnable and terminated. There is no running state.</li>
+                <li><img src='img/thread-life-cycle.png' height='300' width='100%'></li>
+                <li>New -> The thread is in new state if you create an instance of Thread class but before the invocation of start() method.</li>
+                <li>Runnable</li>
+                <li>Running</li>
+                <li>Non-Runnable (Blocked)</li>
+                <li>Terminated</li>
+              </ul>
+          </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section>
+            <h3>Thread class:</h3>
+            <p class="fragment">
+              <ul class="small">
+                <li>Thread(); Thread(String name); Thread(Runnable r); Thread(Runnable r,String name)</li>
+                <li>Commonly used methods of Thread class:
+                    <ul>
+                        <li>public void run(): , public void start():, public void sleep(long miliseconds): ,</li>
+                        <li>public void join(): waits for a thread to die.:: join(long miliseconds): waits for a thread to die for the specified miliseconds./li>
+                    </ul>
+                </li>
+              </ul>
+          </p>
+            <aside class="notes">
+            </aside>
+          </section>
+      </div>
     </div>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
 
     <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-        // Full list of configuration options available here:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
 
-            // Parallax scrolling
-            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-            // parallaxBackgroundSize: '2100px 900px',
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
-                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
-            ]
-        });
-
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+          src: 'lib/js/classList.js',
+          condition: function() {
+            return !document.body.classList;
+          }
+        }, {
+          src: 'plugin/markdown/marked.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]');
+          }
+        }, {
+          src: 'plugin/markdown/markdown.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]');
+          }
+        }, {
+          src: 'plugin/highlight/highlight.js',
+          async: true,
+          callback: function() {
+            hljs.initHighlightingOnLoad();
+          }
+        }, {
+          src: 'plugin/zoom-js/zoom.js',
+          async: true,
+          condition: function() {
+            return !!document.body.classList;
+          }
+        }, {
+          src: 'plugin/notes/notes.js',
+          async: true,
+          condition: function() {
+            return !!document.body.classList;
+          }
+        }]
+      });
     </script>
 
-</body>
+  </body>
 
 </html>

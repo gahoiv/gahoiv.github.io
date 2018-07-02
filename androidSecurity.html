@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
 
     <!-- Metadata to edit -->
@@ -14,106 +14,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/heap.css">
     <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+    <link rel="stylesheet" href="css/heap.css">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
-        if (window.location.search.match(/print-pdf/gi)) {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = 'css/print/pdf.css';
-            document.getElementsByTagName('head')[0].appendChild(link);
-        }
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
     </script>
 
     <!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="reveal">
-        <div class="slides">
-
-            <!-- Title slide -->
-            <section>
-                <h1>Android Security in details</h1>
-                <p>
-                    <small>Vishwas Gahoi</small>
-                </p>
-                <aside class="notes">
-                    Some notes here
-                </aside>
-            </section>
-            <!-- Overview -->
-            <section>
-                <h2>Overview</h2>
-                <p class="fragment">
-                    <ul class='small'>
-                        <li>Java Programming Language</li>
-                        <li>Collections</li>
-                        <li>Compact Profiles</li>
-                        <li>Security</li>
-                        <li>JavaFX</li>
-                        <li>Tools</li>
-                        <li>Internationalization</li>
-                        <li>Deployment</li>
-                        <li>Date-Time Package</li>
-                        <li>Scripting</li>
-                        <li>Pack200 & IO and NIO</li>
-                        <li>java.lang and java.util Packages</li>
-                        <LI>JDBC & Java DB</LI>
-                        <li>Networking</li>
-                        <li>Concurrency</li>
-                        <li>HotSpot</li>
-                        <li>Java XML - JAXP & Java Mission Control 5.3 Release Notes</li>
-                    </ul>
-                </p>
-                <aside class="notes">
-                </aside>
-            </section>
-        </div>
+      <div class="slides">
+        <!-- Title slide -->
+        <section>
+          <h1>Android Security in details</h1>
+          <p>
+            <small>Vishwas Gahoi</small>
+          </p>
+          <aside class="notes">
+            Some notes here
+          </aside>
+        </section>
+        <!-- Overview -->
+        <section>
+          <h2>Overview</h2>
+          <p class="fragment">
+            <ul class='small'>
+              <li>App security best practices</li>
+            </ul>
+          </p>
+          <aside class="notes">
+          </aside>
+        </section>
+        <section>
+          <h6>Enforce secure communication</h6>
+          <p class="fragment">
+            <ul class='small'>
+              <li>Use implicit intents and non-exported content providers</li>
+              <li>When sharing data between two apps that you control or own, use signature-based permissions. These permissions don't require user confirmation and instead check that the apps accessing the data are signed using the same signing key.</li>
+              <li><pre class='code-no-padding'><code>
+      &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.example.myapp"&gt;
+    &lt;permission android:name="my_custom_permission_name"
+                android:protectionLevel="signature" /&gt;
+              </code></pre></li>
+            </ul>
+          </p>
+          <aside class="notes">
+          </aside>
+        </section>
+      </div>
     </div>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
 
     <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-        // Full list of configuration options available here:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
 
-            // Parallax scrolling
-            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-            // parallaxBackgroundSize: '2100px 900px',
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
-                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
-            ]
-        });
-
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+          src: 'lib/js/classList.js',
+          condition: function() {
+            return !document.body.classList;
+          }
+        }, {
+          src: 'plugin/markdown/marked.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]');
+          }
+        }, {
+          src: 'plugin/markdown/markdown.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]');
+          }
+        }, {
+          src: 'plugin/highlight/highlight.js',
+          async: true,
+          callback: function() {
+            hljs.initHighlightingOnLoad();
+          }
+        }, {
+          src: 'plugin/zoom-js/zoom.js',
+          async: true,
+          condition: function() {
+            return !!document.body.classList;
+          }
+        }, {
+          src: 'plugin/notes/notes.js',
+          async: true,
+          condition: function() {
+            return !!document.body.classList;
+          }
+        }]
+      });
     </script>
 
-</body>
+  </body>
 
 </html>
